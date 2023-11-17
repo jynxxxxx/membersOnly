@@ -1,0 +1,64 @@
+.mainctn{
+  display: grid;
+  grid-template-rows: 7rem 1fr;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.signupctn{
+  height: 70vh;
+  width: 70vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  background-color: lightcyan;
+  align-self: center;
+  justify-self: center;
+}
+
+.formctn{
+  display: grid;
+  grid-template-rows: 5rem 1fr;
+}
+
+.signupform{
+  display: grid;
+  grid-template-rows: 5rem;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+input{
+  font-size: var(--btnfontsize);
+  font-family: var(--basicfont);
+}
+
+.passreq{
+  font-size: 1rem;
+}
+
+.userinput, .passinput{
+  font-size: var(--btnfontsize);
+  font-family: var(--basicfont);
+  display: flex;
+  flex-direction: column;
+}
+
+.heading{
+  font-size: var(--headingfontsize);
+  font-family: var(--titlefont);
+  text-align: center;
+}
+
+.btns{
+  width: fit-content;
+  align-self: right;
+  justify-self: right;
+}
+
+.signuperrors{
+  font-size: 1.2rem;
+  font-family: var(--basicfont);
+  color: red;
+}

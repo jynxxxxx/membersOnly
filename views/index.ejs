@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href= "/css/index.css" rel="stylesheet" />
+  <link href="/css/app.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Playpen+Sans&family=Red+Hat+Display&display=swap" rel="stylesheet">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <div class="mainctn">
+    <% if (user) { %>
+      <div class="header">
+        <div class="title"><a class="title" href="/">Members<span class=only>Only</span></a></div>
+        <div class="userctn"> 
+          <div class="username">Welcome <%= user.username %>!</div>
+          <div class="logoutbtn"><a class="btns" href="/log-out">Log out</a></div>
+        </div>
+      </div>
+      <div class="contentctn">
+        <div class="msgformctn">
+          <div class="heading">Post a Message</div>
+          <form class="msgform" action="/post" method="POST">
+            <textarea class="msginput" rows="3" name="message" placeholder="What are you thinking?" type="textarea"></textarea>
+            <button class="btns" type="submit">Post</button>
+          </form>
+          <div class="note">Note: Once posted, it cannot be edited or deleted</div>
+        </div>
+        <div class="boardctn">
+          <div class="heading">Message Board</div>
+          <% if (user.member_status === 'true') { %>
+            <div class="cardctn">
+              <% for (const message of messages) { %>
+                <div class="card">
+                  <div class="cardhead">
+                    <div class="user"><strong><%= message.user.username %></strong>: </div>
+                    <div class="postdate"><%= message.post_date_formatted %></div>
+                  </div>
+                  <div class="msgpost"><%= message.message %></div>
+                </div>
+              <% } %>
+            </div>
+          <% } else { %>
+            <div class="cardctn">
+              <% for (const message of messages) { %>
+                <div class="card">
+                  <div class="cardhead">
+                    <div class="user"><strong>**********</strong>: </div>
+                    <div class="postdate"><%= message.post_date_formatted %></div>
+                  </div>
+                  <div class="msgpost"><%= message.message %></div>
+                  <div class="note">Note: Become a Secret Member to unveil who wrote it and when.</div>
+                </div>
+              <% } %>
+            </div>
+            <div class="footer">
+              <form class="scrtform" action="/secret" method="POST">
+                  <div class="inputsection">
+                    <label for="secretcode">Enter the Secret Code to Join:</label> 
+                    <input class="codeinput" name="secretcode" type="password" />
+                  </div>
+                  <% if (errors) { %>
+                    <ul class="scrterror">
+                      <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                      <% }); %>
+                    </ul>
+                  <% } %>
+                  <% if (errors && errors.length > 0) { %>
+                    <script>
+                      window.addEventListener('load', () => {
+                        const errorElements = document.querySelectorAll('.scrterror');
+                        errorElements.forEach(element => {
+                          element.style.display = 'none';
+                        });
+                      });
+                    </script>
+                  <% } %>
+                  <button class="scrtbtn">Enter the Club</button>
+              </form>
+            </div>
+          <% } %>
+        </div>
+      </div>
+      
+
+    <% } else { %>
+      <div class="header">
+        <div class="title">Members<span class=only>Only</span></div>
+          <div class="loginbtnctn">
+            <div class="loginbtn"><a class="btns" href="/login">Log in</a></div>
+            <div class="signupbtn"><a class="btns" href="/sign-up">Sign up</a></div>
+          </div>
+      </div>
+      <div class="contentctn">
+        <div class="boardctn">
+          <div class="heading">Message Board</div>
+          <div class="cardctn">
+            <% for (const message of messages) { %>
+              <div class="card">
+                <div class="cardhead">
+                  <div class="user"><strong>**********</strong>: </div>
+                  <div class="postdate"><%= message.post_date_formatted %></div>
+                </div>
+                <div class="msgpost"><%= message.message %></div>
+                <div class="note">Note: Sign-up to write your own!.</div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

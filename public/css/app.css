@@ -1,0 +1,44 @@
+:root{
+  --btnfontsize: 1.5rem;
+  --headingfontsize: 3rem;
+  --titlefont: 'Black Han Sans', sans-serif;
+  --msgfont: 'Playpen Sans', cursive;
+  --basicfont: 'Red Hat Display', sans-serif;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, li{
+  list-style:none;
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(127, 225, 255);
+  margin: 0;
+}
+
+.only{
+  color: blue;
+}
+
+.title{
+  font-size: 3.5rem;
+  margin-left: 15rem;
+  font-family: var(--titlefont);
+}
+
+.btns{
+  padding: 8px 16px;
+  font-size: var(--btnfontsize);
+  font-family: var(--basicfont);
+  border-radius: 6px;
+}
+

@@ -1,0 +1,148 @@
+.mainctn{
+  display: grid;
+  grid-template-rows: 7rem 1fr;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.username{
+  font-size: 2rem;
+  font-family: var(--basicfont);
+  font-weight: 600;
+}
+
+.loginbtnctn, .userctn{
+  display: flex;
+  width: fit-content;
+  gap: 3rem;
+  margin-right: 3rem;
+}
+
+.loginbtn, .signupbtn, .logoutbtn{
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.contentctn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading{
+  font-size: var(--headingfontsize);
+  font-family: var(--titlefont);
+  text-align: center;
+}
+
+.msgformctn{
+  margin-top: 2rem;
+  font-size: var(--btnfontsize);
+  font-family: var(--basicfont);
+}
+
+.msgform{
+  display: flex;
+  flex-direction: column;
+}
+
+.msginput{
+  font-size: var(--btnfontsize);
+  font-family: var(--basicfont);
+  width: 60vw;
+  overflow-y: scroll;
+}
+
+.boardctn{
+  width: 60vw;
+  margin-top: 2rem;
+}
+
+.cardctn{
+  display: grid;
+  grid-auto-rows: auto;
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.card{
+  box-sizing: border-box;
+  width: 60vw;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 0px 13px 4px #B8BFC4;
+  min-height: 15rem;
+  height: fit-content;
+  display: grid;
+  grid-template-rows: 3rem 1fr 3rem;
+}
+
+.cardhead{
+  font-size: var(--btnfontsize);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--basicfont);
+}
+
+.msgpost{
+  font-size: 2rem;
+  font-family: var(--msgfont);
+  overflow-x: hidden;
+}
+
+.note{
+  font-size: 1.3rem;
+  text-align: center;
+  color: grey;
+  border-top: lightgrey 1px solid;
+  padding-top: 4px;
+  align-self:last baseline;
+  width: 100%;
+  font-family: var(--basicfont);
+}
+
+.footer{
+  position: fixed;
+  height: 7rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.scrtform{
+  font-family: var(--basicfont);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  height: fit-content;
+  margin-right: 5rem;
+}
+
+.inputsection{
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+}
+
+.scrterror{
+  position: absolute;
+  bottom: 2px;
+  color: red;
+}
+
+.codeinput{
+  font-family: var(--basicfont);
+  font-size: var(--btnfontsize);
+}
+
+.scrtbtn{
+  font-family: var(--basicfont);
+  font-size: 1.2rem;
+  padding: 4px 8px;
+  height: fit-content;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href= "/css/signup.css" rel="stylesheet" />
+  <link href="/css/app.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Playpen+Sans&family=Red+Hat+Display&display=swap" rel="stylesheet">
+  <title><%= title %></title>
+</head>
+<body>
+  <div class="mainctn">
+    <div class="header">
+      <div class="title"><a class="title" href="/">Members<span class=only>Only</span></a></div>
+    </div>
+    <div class="signupctn">
+      <div class="img">to input</div>
+      <div class="formctn">
+        <div class="heading">Sign Up</div>
+        <form class="signupform" action="" method="POST">
+          <div class="userinput">
+            <label for="username">Username:</label>
+            <input name="username" placeholder="username" type="text" />
+          </div>
+          <div class="passinput">
+            <label for="password">Password:</label> 
+            <div class="passreq"> Password must be at least 5 characters and contain at least 1 uppercase and 1 number</div>
+            <input name="password" placeholder="password" type="password" />
+          </div>
+          <div class="passinput">
+            <label for="confirmPassword">Confirm Password:</label> 
+            <input name="confirmPassword" placeholder="confirm password" type="password" />
+          </div>
+          <% if (errors) { %>
+            <ul class="signuperrors">
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }); %>
+            </ul>
+          <% } %>
+          <button class="btns">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
