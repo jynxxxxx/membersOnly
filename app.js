@@ -21,7 +21,8 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public', { 'extensions': ['html', 'css'] }));
+app.use(express.static(__dirname + "/public/"));
+
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
