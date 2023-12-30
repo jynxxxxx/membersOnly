@@ -1,9 +1,20 @@
-:root{
-  --btnfontsize: 1.5rem;
-  --headingfontsize: 3rem;
-  --titlefont: 'Black Han Sans', sans-serif;
-  --msgfont: 'Playpen Sans', cursive;
-  --basicfont: 'Red Hat Display', sans-serif;
+:root {
+  --mainfontsize: 1.3rem;
+  --headingfontsize: 2rem;
+  --signupfontsize: 1.5rem;
+  --msgfont: 'Poppins', sans-serif;
+  --basicfont: 'Lora', serif;
+  --maincolor: #003399;
+  --titlecolor: #6995CB;
+  --btncolor: #D5E9FE;
+  --fontcolor: #141D36;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--fontcolor);
 }
 
 a:-webkit-any-link {
@@ -11,34 +22,50 @@ a:-webkit-any-link {
   color: inherit;
 }
 
-ul, li{
-  list-style:none;
+ul,
+li {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(127, 225, 255);
+  background-color: var(--maincolor);
   margin: 0;
+  height: 7rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
 }
 
-.only{
-  color: blue;
+.only {
+  color: var(--btncolor);
+  font-weight: 600;
 }
 
-.title{
+.title {
   font-size: 3.5rem;
-  margin-left: 15rem;
-  font-family: var(--titlefont);
+  margin-left: 7rem;
+  font-family: var(--basicfont);
+  color: white;
+  font-weight: 600;
 }
 
-.btns{
-  padding: 8px 16px;
-  font-size: var(--btnfontsize);
+.btns {
+  padding: 4px 10px;
+  font-size: 1.2rem;
   font-family: var(--basicfont);
   border-radius: 6px;
+  background-color: var(--btncolor);
+  font-weight: 600;
 }
 
+.btns:hover {
+  transform: scale(1.1);
+  font-weight: bolder;
+}

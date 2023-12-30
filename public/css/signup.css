@@ -1,63 +1,78 @@
-.mainctn{
-  display: grid;
-  grid-template-rows: 7rem 1fr;
-  min-height: 100vh;
-  margin: 0;
-}
-
-.signupctn{
-  height: 70vh;
-  width: 70vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.mainctn {
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightcyan;
+  margin-top: 7rem;
+  height: calc(100vh - 7rem);
+  background-color: #eaf2fa;
+}
+
+.signupctn {
+  height: 40vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-content: center;
+  align-items: center;
   align-self: center;
   justify-self: center;
+  border: black 1px solid;
+  border-radius: 12px;
+  background-color: white;
 }
 
-.formctn{
-  display: grid;
-  grid-template-rows: 5rem 1fr;
+.heading {
+  font-size: var(--headingfontsize);
+  font-family: var(--basicfont);
+  text-align: center;
+  background-color: var(--titlecolor);
+  padding: 16px 0;
+  border-radius: 12px 12px 0 0;
+  font-weight: 600;
+  color: white;
 }
 
-.signupform{
+.formctn {
+  height: 100%;
+}
+
+.signupform {
   display: grid;
-  grid-template-rows: 5rem;
-  gap: 2rem;
+  grid-template-rows: auto auto auto 2rem;
+  justify-content: space-between;
   padding: 2rem;
+  height: 100%;
 }
 
-input{
-  font-size: var(--btnfontsize);
+input {
+  font-size: var(--signupfontsize);
   font-family: var(--basicfont);
 }
 
-.passreq{
+.password {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.passreq {
   font-size: 1rem;
 }
 
-.userinput, .passinput{
-  font-size: var(--btnfontsize);
+.userinput,
+.passinput {
+  font-size: var(--signupfontsize);
   font-family: var(--basicfont);
   display: flex;
   flex-direction: column;
 }
 
-.heading{
-  font-size: var(--headingfontsize);
-  font-family: var(--titlefont);
-  text-align: center;
-}
-
-.btns{
+.btns {
   width: fit-content;
   align-self: right;
   justify-self: right;
 }
 
-.signuperrors{
+.signuperrors {
   font-size: 1.2rem;
   font-family: var(--basicfont);
   color: red;

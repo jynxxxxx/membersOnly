@@ -13,15 +13,17 @@ exports.home_page = asyncHandler(async (req, res) => {
     res.render("index", {
       title: "Message Board",
       user: req.user,
-      messages: "There are no messages"
+      messages: "There are no messages",
+      loginErrors: false,
     });
   }
-  
+
   res.render("index", {
     title: "Message Board",
     user: req.user,
     messages: messages,
-    errors: ''
+    errors: '',
+    loginErrors: false,
   });
 });
 
@@ -43,8 +45,9 @@ exports.secret_post = [
         user: user,
         messages: messages,
         errors: errors.array(),
+        loginErrors: false,
       });
-      return ;
+      return;
     }
 
     // Update only the member_status field
@@ -70,7 +73,7 @@ exports.signup_page_post = [
     .trim()
     .isLength({ min: 1 })
     .withMessage("UserName is required.")
-    .custom((value) => !/\s/.test(value)) 
+    .custom((value) => !/\s/.test(value))
     .withMessage("UserName must not contain spaces.")
     .custom(async value => {
       const userExists = await User.findOne({ username: value })
@@ -84,14 +87,14 @@ exports.signup_page_post = [
     .trim()
     .isLength({ min: 5 })
     .withMessage("Password is Required.")
-    .matches(/^(?=.*[0-9])(?=.*[A-Z])/) 
+    .matches(/^(?=.*[0-9])(?=.*[A-Z])/)
     .withMessage("Password must contain at least one number and one uppercase letter."),
   body('confirmPassword')
     .custom((value, { req }) => {
       return value === req.body.password;
     })
     .withMessage('Passwords do not match.'),
-    
+
   asyncHandler(async (req, res, next) => {
     // Extract the validation trueerrors from a request.
     const errors = validationResult(req);
@@ -131,19 +134,34 @@ exports.login_page_get = (req, res, next) => {
 };
 
 exports.login_page_post = asyncHandler(async (req, res, next) => {
+  const messages = await Message.find().populate('user').sort({ post_date: -1 }).exec();
+
   await passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err); // Pass any errors to the next middleware
     }
 
+
     if (!user) {
-      res.render("login", {
-        title: "Login",
-        errors: true,
-        errormsg: info.message
+      if (messages.length === 0) {
+        res.render("index", {
+          title: "Message Board",
+          user: req.user,
+          messages: "There are no messages",
+          loginErrors: true,
+          loginErrorMsg: info.message,
+        });
+      }
+
+      return res.render("index", {
+        title: "Message Board",
+        user: req.user,
+        messages: messages,
+        loginErrors: true,
+        loginErrorMsg: info.message,
       });
-    }
-    
+    };
+
     req.login(user, (err) => {
       if (err) {
         return next(err);
@@ -177,12 +195,12 @@ exports.message_form_post = [
   body("message")
     .isLength({ min: 1 })
     .withMessage("Cannot be Blank"),
-  
+
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
-    const messages = await Message.find().sort({post_date: -1}).exec()
+    const messages = await Message.find().sort({ post_date: -1 }).exec()
     const user = req.user
-  
+
     const message = new Message({
       user: user,
       message: req.body.message,
