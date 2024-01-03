@@ -12,7 +12,7 @@ Welcome to MembersOnly!
 - [Notes](#notes)
 
 ## General Info
-MembersOnly is a strategic two-player board game where each player attempts to sink the opponent's fleet of ships. The game is played on a grid, and players will play against a computer to locate and destroy the hidden ships.
+MembersOnly was a project meant for students to practice their authentication and database skills.
 
 ## Features
 - **User Authentication**: Users must sign in to access content and features.
