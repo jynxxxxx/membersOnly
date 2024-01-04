@@ -8,7 +8,6 @@
 }
 
 .signupctn {
-  height: 40vh;
   display: grid;
   grid-template-rows: auto 1fr;
   justify-content: center;
@@ -41,6 +40,7 @@
   justify-content: space-between;
   padding: 2rem;
   height: 100%;
+  gap: 1.5rem;
 }
 
 input {

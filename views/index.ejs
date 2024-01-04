@@ -19,7 +19,7 @@
   <div class="mainctn">
     <% if (user) { %>
       <div class="header">
-        <div class="title"><a class="title" href="/">members<span class=only>Only</span></a></div>
+        <div class="title"><a href="/">members<span class=only>Only</span></a></div>
         <div class="userctn">
           <div class="username">Welcome <%= user.username %>!</div>
           <div class="logoutbtn btns"><a class="btns" href="/log-out">Log out</a></div>
@@ -109,7 +109,7 @@
 
       <% } else { %>
         <div class="header">
-          <div class="title">members<span class=only>Only</span></div>
+          <div class="title"><a href="/">members<span class=only>Only</span></a></div>
           <div class="loginbtnctn">
             <div class="signupbtn btns"><a class="btns" href="/sign-up">Sign up</a></div>
           </div>
